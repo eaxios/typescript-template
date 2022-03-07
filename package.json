@@ -18,7 +18,7 @@
   },
   "types": "types/index.d.ts",
   "scripts": {
-    "prebuild": "rimraf dist",
+    "dev": "npm run rollup:build && npm run tsc:declaration",
     "build": "NODE_ENV=production npm run rollup:build && npm run tsc:declaration",
     "rollup:build": "rollup --config",
     "tsc:declaration": "tsc --declaration --emitDeclarationOnly --outDir types"

@@ -5,12 +5,15 @@ import json from '@rollup/plugin-json';
 import { terser } from 'rollup-plugin-terser';
 import pkg from './package.json'
 
+// Delete dist on each build
+require("rimraf").sync("dist");
+
 export default {
   input: 'src/index.ts',
   output: [
-    // { file: 'dist/cjs/index.js', format: 'cjs' },
-    { file: 'dist/esm/index.js', format: 'esm' },
-    { file: 'dist/umd/index.js', format: 'umd', name: pkg.name },
+    // { file: 'dist/cjs/index.js', format: 'cjs', sourcemap: true, },
+    { file: 'dist/esm/index.js', format: 'esm', sourcemap: true, },
+    { file: 'dist/umd/index.js', format: 'umd', sourcemap: true, name: pkg.name },
   ],
   plugins: [
     json(),
